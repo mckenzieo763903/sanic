@@ -756,7 +756,7 @@ class WebsocketImplProtocol:
 
             # Generate a unique random payload otherwise.
             while data is None or data in self.pings:
-                data = struct.pack("!I", random.getrandbits(32))
+                data = struct.pack("!I", secrets.randbits(32))
 
             self.pings[data] = self.io_proto.loop.create_future()
 
